@@ -9,8 +9,14 @@ import Foundation
 
 public class FullHuntApp {
     
+    /// The framework configuration required to start using it
     let appConfiguration: FullHuntConfiguration
     
+    /**
+     The framework initializer
+     - parameters:
+        - configuration: the framework configuration
+     */
     init(with configuration: FullHuntConfiguration) {
         appConfiguration = configuration
     }
