@@ -7,4 +7,5 @@
 
 import Foundation
 
+/// Base API version (v1)
 let kBaseVersion = "v1"

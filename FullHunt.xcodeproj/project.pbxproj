@@ -14,6 +14,8 @@
 		1856B42A276A210A00991641 /* FullHuntConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1856B429276A210A00991641 /* FullHuntConfiguration.swift */; };
 		1856B42C276A221100991641 /* FullHuntApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1856B42B276A221100991641 /* FullHuntApp.swift */; };
 		1856B430276A26EE00991641 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1856B42F276A26EE00991641 /* Constants.swift */; };
+		1856B433276A391500991641 /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1856B432276A391500991641 /* HTTPMethod.swift */; };
+		1856B435276A3A8900991641 /* FullHuntNetworkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1856B434276A3A8900991641 /* FullHuntNetworkTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +37,8 @@
 		1856B429276A210A00991641 /* FullHuntConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullHuntConfiguration.swift; sourceTree = "<group>"; };
 		1856B42B276A221100991641 /* FullHuntApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullHuntApp.swift; sourceTree = "<group>"; };
 		1856B42F276A26EE00991641 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		1856B432276A391500991641 /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
+		1856B434276A3A8900991641 /* FullHuntNetworkTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullHuntNetworkTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +84,7 @@
 				1856B412276A204800991641 /* FullHunt.h */,
 				1856B413276A204800991641 /* FullHunt.docc */,
 				1856B42E276A238C00991641 /* Core */,
+				1856B431276A353200991641 /* Networking */,
 			);
 			path = FullHunt;
 			sourceTree = "<group>";
@@ -88,6 +93,7 @@
 			isa = PBXGroup;
 			children = (
 				1856B41E276A204800991641 /* FullHuntCoreTests.swift */,
+				1856B434276A3A8900991641 /* FullHuntNetworkTests.swift */,
 			);
 			path = FullHuntTests;
 			sourceTree = "<group>";
@@ -100,6 +106,14 @@
 				1856B42F276A26EE00991641 /* Constants.swift */,
 			);
 			path = Core;
+			sourceTree = "<group>";
+		};
+		1856B431276A353200991641 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				1856B432276A391500991641 /* HTTPMethod.swift */,
+			);
+			path = Networking;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -214,6 +228,7 @@
 				1856B42A276A210A00991641 /* FullHuntConfiguration.swift in Sources */,
 				1856B414276A204800991641 /* FullHunt.docc in Sources */,
 				1856B42C276A221100991641 /* FullHuntApp.swift in Sources */,
+				1856B433276A391500991641 /* HTTPMethod.swift in Sources */,
 				1856B430276A26EE00991641 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -222,6 +237,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1856B435276A3A8900991641 /* FullHuntNetworkTests.swift in Sources */,
 				1856B41F276A204800991641 /* FullHuntCoreTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
