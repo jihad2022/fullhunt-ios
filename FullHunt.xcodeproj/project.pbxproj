@@ -11,6 +11,8 @@
 		1856B41A276A204800991641 /* FullHunt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1856B40F276A204800991641 /* FullHunt.framework */; };
 		1856B41F276A204800991641 /* FullHuntTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1856B41E276A204800991641 /* FullHuntTests.swift */; };
 		1856B420276A204800991641 /* FullHunt.h in Headers */ = {isa = PBXBuildFile; fileRef = 1856B412276A204800991641 /* FullHunt.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1856B42A276A210A00991641 /* FullHuntConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1856B429276A210A00991641 /* FullHuntConfiguration.swift */; };
+		1856B42C276A221100991641 /* FullHuntApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1856B42B276A221100991641 /* FullHuntApp.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,6 +31,8 @@
 		1856B413276A204800991641 /* FullHunt.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = FullHunt.docc; sourceTree = "<group>"; };
 		1856B419276A204800991641 /* FullHuntTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FullHuntTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1856B41E276A204800991641 /* FullHuntTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullHuntTests.swift; sourceTree = "<group>"; };
+		1856B429276A210A00991641 /* FullHuntConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullHuntConfiguration.swift; sourceTree = "<group>"; };
+		1856B42B276A221100991641 /* FullHuntApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullHuntApp.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +77,8 @@
 			children = (
 				1856B412276A204800991641 /* FullHunt.h */,
 				1856B413276A204800991641 /* FullHunt.docc */,
+				1856B429276A210A00991641 /* FullHuntConfiguration.swift */,
+				1856B42B276A221100991641 /* FullHuntApp.swift */,
 			);
 			path = FullHunt;
 			sourceTree = "<group>";
@@ -194,7 +200,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1856B42A276A210A00991641 /* FullHuntConfiguration.swift in Sources */,
 				1856B414276A204800991641 /* FullHunt.docc in Sources */,
+				1856B42C276A221100991641 /* FullHuntApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -398,6 +406,7 @@
 		1856B427276A204800991641 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = R8F5DW7M84;
@@ -414,6 +423,7 @@
 		1856B428276A204800991641 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = R8F5DW7M84;
