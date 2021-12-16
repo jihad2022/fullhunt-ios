@@ -18,6 +18,8 @@
 		1856B435276A3A8900991641 /* FullHuntNetworkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1856B434276A3A8900991641 /* FullHuntNetworkTests.swift */; };
 		18C26949276B3A8800E665BE /* Requestable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C26948276B3A8800E665BE /* Requestable.swift */; };
 		18C2694B276B3B3600E665BE /* HTTPEncoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C2694A276B3B3600E665BE /* HTTPEncoding.swift */; };
+		18C2694D276B40E800E665BE /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C2694C276B40E800E665BE /* Router.swift */; };
+		18C2694F276B44D400E665BE /* HeaderKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C2694E276B44D400E665BE /* HeaderKey.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,6 +45,8 @@
 		1856B434276A3A8900991641 /* FullHuntNetworkTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullHuntNetworkTests.swift; sourceTree = "<group>"; };
 		18C26948276B3A8800E665BE /* Requestable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Requestable.swift; sourceTree = "<group>"; };
 		18C2694A276B3B3600E665BE /* HTTPEncoding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPEncoding.swift; sourceTree = "<group>"; };
+		18C2694C276B40E800E665BE /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
+		18C2694E276B44D400E665BE /* HeaderKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderKey.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +122,8 @@
 				1856B432276A391500991641 /* HTTPMethod.swift */,
 				18C26948276B3A8800E665BE /* Requestable.swift */,
 				18C2694A276B3B3600E665BE /* HTTPEncoding.swift */,
+				18C2694C276B40E800E665BE /* Router.swift */,
+				18C2694E276B44D400E665BE /* HeaderKey.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -231,6 +237,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18C2694D276B40E800E665BE /* Router.swift in Sources */,
 				1856B42A276A210A00991641 /* FullHuntConfiguration.swift in Sources */,
 				1856B414276A204800991641 /* FullHunt.docc in Sources */,
 				1856B42C276A221100991641 /* FullHuntApp.swift in Sources */,
@@ -238,6 +245,7 @@
 				1856B433276A391500991641 /* HTTPMethod.swift in Sources */,
 				1856B430276A26EE00991641 /* Constants.swift in Sources */,
 				18C2694B276B3B3600E665BE /* HTTPEncoding.swift in Sources */,
+				18C2694F276B44D400E665BE /* HeaderKey.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

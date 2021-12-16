@@ -6,10 +6,12 @@
 //
 
 import Foundation
-
+/**
+ A protocol defines HTTP request's properties
+ */
 protocol Requestable {
-    var method: HTTPMethod { get }
-    var url: URL? { get }
-    var encoding: HTTPEncoding { get }
-    var header: [String: String] { get }
+    /// HTTP Request
+    var request: URLRequest? { get }
+    /// Request's URL session
+    var session: URLSession { get }
 }

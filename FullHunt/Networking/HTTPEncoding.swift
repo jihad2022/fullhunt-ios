@@ -6,7 +6,10 @@
 //
 
 import Foundation
-
+/**
+ An enum with HTTP Encodings
+ */
 enum HTTPEncoding: String {
+    /// JSON encoding for HTTP requests
     case json = "application/json"
 }
