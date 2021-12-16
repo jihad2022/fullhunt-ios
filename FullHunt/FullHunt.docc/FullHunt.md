@@ -1,13 +1,7 @@
 # ``FullHunt``
 
-<!--@START_MENU_TOKEN@-->Summary<!--@END_MENU_TOKEN@-->
+A swift framework to interact with FullHunt public API
 
 ## Overview
 
-<!--@START_MENU_TOKEN@-->Text<!--@END_MENU_TOKEN@-->
-
-## Topics
-
-### <!--@START_MENU_TOKEN@-->Group<!--@END_MENU_TOKEN@-->
-
-- <!--@START_MENU_TOKEN@-->``Symbol``<!--@END_MENU_TOKEN@-->
+FullHunt-iOS makes it easy for you to interact with FullHunt public API and lookup the data you need without you having to worry about hitting the srvices.
