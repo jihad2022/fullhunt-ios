@@ -86,6 +86,44 @@ class FullHuntCoreTests: XCTestCase {
         }
     }
     
+    func testGetSubdomainDetailsSuccess() {
+        do {
+            let token = try XCTUnwrap(token)
+            let apiVersion = try XCTUnwrap(apiVersion)
+            let fullHuntApp = getApp(
+                with: token,
+                version: apiVersion,
+                serviceManager: ServiceManagerSubdomainSuccessMock()
+            )
+            
+            let fullHuntSuccessDelegate = FullHuntSuccessDelegate()
+            fullHuntApp.delegate = fullHuntSuccessDelegate
+            
+            fullHuntApp.getSubdomainDetails(for: "test.test.com")
+        } catch {
+            XCTFail(error.localizedDescription)
+        }
+    }
+    
+    func testGetSubdomainDetailsFailed() {
+        do {
+            let token = try XCTUnwrap(token)
+            let apiVersion = try XCTUnwrap(apiVersion)
+            let fullHuntApp = getApp(
+                with: token,
+                version: apiVersion,
+                serviceManager: ServiceManagerFailureMock()
+            )
+            
+            let fullHuntFailedDelegate = FullHuntFailedDelegate()
+            fullHuntApp.delegate = fullHuntFailedDelegate
+            
+            fullHuntApp.getSubdomainDetails(for: "test.test.com")
+        } catch {
+            XCTFail(error.localizedDescription)
+        }
+    }
+    
     private func getApp(
         with token: String,
         version: String? = nil,
@@ -104,10 +142,20 @@ fileprivate class FullHuntSuccessDelegate: FullHuntAppDelegate {
         XCTAssertNotNil(domain)
         XCTAssertEqual(domain?.domain, "test.com")
     }
+    
+    func getSubdomainDetailsEnded(with subdomain: Subdomain?, error: FullHuntError?) {
+        XCTAssertNotNil(subdomain)
+        XCTAssertEqual(subdomain?.domain, "test.test.com")
+    }
 }
 
 fileprivate class FullHuntFailedDelegate: FullHuntAppDelegate {
     func getDomainDetailsEnded(with domain: Domain?, error: FullHuntError?) {
+        XCTAssertNotNil(error)
+        XCTAssertEqual(error?.code, 400)
+    }
+    
+    func getSubdomainDetailsEnded(with subdomain: Subdomain?, error: FullHuntError?) {
         XCTAssertNotNil(error)
         XCTAssertEqual(error?.code, 400)
     }
@@ -119,6 +167,16 @@ fileprivate class ServiceManagerDomainSuccessMock: ServiceManagerProtocol {
         completion: @escaping (Result<T, FullHuntError>) -> Void
     ) where T: Decodable {
         let domain = Domain(domain: "test.com", message: "", hosts: [], status: 200, metadata: nil)
+        completion(.success(domain as! T))
+    }
+}
+
+fileprivate class ServiceManagerSubdomainSuccessMock: ServiceManagerProtocol {
+    func makeNetworkRequest<T>(
+        router: Router,
+        completion: @escaping (Result<T, FullHuntError>) -> Void
+    ) where T: Decodable {
+        let domain = Subdomain(domain: "test.test.com", message: "", subdomains: [], status: 200, metadata: nil)
         completion(.success(domain as! T))
     }
 }

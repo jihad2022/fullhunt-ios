@@ -31,6 +31,11 @@ public class FullHuntApp {
         self.serviceManager = serviceManager
     }
     
+    /**
+     Get domain details from API
+     - parameters:
+        - domain: the designated domain to lookup
+     */
     func getDomainDetails(for domain: String) {
         let router = Router.getDomainDetails(token: appConfiguration.apiToken, version: appConfiguration.apiVersion, domain: domain)
         serviceManager.makeNetworkRequest(
@@ -41,6 +46,25 @@ public class FullHuntApp {
                 self?.delegate?.getDomainDetailsEnded(with: domain, error: nil)
             case .failure(let error):
                 self?.delegate?.getDomainDetailsEnded(with: nil, error: error)
+            }
+        }
+    }
+    
+    /**
+     Get subdomain details from API
+     - parameters:
+        - subdomain: the designated subdomain to lookup
+     */
+    func getSubdomainDetails(for subdomain: String) {
+        let router = Router.getSubdomains(token: appConfiguration.apiToken, version: appConfiguration.apiVersion, domain: subdomain)
+        serviceManager.makeNetworkRequest(
+            router: router
+        ) { [weak self] (result: Result<Subdomain, FullHuntError>) in
+            switch result {
+            case .success(let subdomain):
+                self?.delegate?.getSubdomainDetailsEnded(with: subdomain, error: nil)
+            case .failure(let error):
+                self?.delegate?.getSubdomainDetailsEnded(with: nil, error: error)
             }
         }
     }
