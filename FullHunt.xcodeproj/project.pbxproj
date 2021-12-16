@@ -24,6 +24,13 @@
 		18C26956276B6A8500E665BE /* FullHuntErrorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C26955276B6A8500E665BE /* FullHuntErrorTests.swift */; };
 		18C26959276B6D3800E665BE /* ServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C26958276B6D3800E665BE /* ServiceManager.swift */; };
 		18C2695B276B7D0700E665BE /* ServiceManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C2695A276B7D0700E665BE /* ServiceManagerTests.swift */; };
+		18C2695E276B84CA00E665BE /* DomainModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C2695D276B84CA00E665BE /* DomainModel.swift */; };
+		18C26960276B87EA00E665BE /* SubdomainModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C2695F276B87EA00E665BE /* SubdomainModel.swift */; };
+		18C26962276B889A00E665BE /* HostModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C26961276B889A00E665BE /* HostModel.swift */; };
+		18C26964276B895800E665BE /* CloudModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C26963276B895800E665BE /* CloudModel.swift */; };
+		18C26966276B897300E665BE /* DNSModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C26965276B897300E665BE /* DNSModel.swift */; };
+		18C26968276B899100E665BE /* IPMetadataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C26967276B899100E665BE /* IPMetadataModel.swift */; };
+		18C2696A276B89AA00E665BE /* MetadataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C26969276B89AA00E665BE /* MetadataModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +62,13 @@
 		18C26955276B6A8500E665BE /* FullHuntErrorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullHuntErrorTests.swift; sourceTree = "<group>"; };
 		18C26958276B6D3800E665BE /* ServiceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceManager.swift; sourceTree = "<group>"; };
 		18C2695A276B7D0700E665BE /* ServiceManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceManagerTests.swift; sourceTree = "<group>"; };
+		18C2695D276B84CA00E665BE /* DomainModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomainModel.swift; sourceTree = "<group>"; };
+		18C2695F276B87EA00E665BE /* SubdomainModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubdomainModel.swift; sourceTree = "<group>"; };
+		18C26961276B889A00E665BE /* HostModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostModel.swift; sourceTree = "<group>"; };
+		18C26963276B895800E665BE /* CloudModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudModel.swift; sourceTree = "<group>"; };
+		18C26965276B897300E665BE /* DNSModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DNSModel.swift; sourceTree = "<group>"; };
+		18C26967276B899100E665BE /* IPMetadataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IPMetadataModel.swift; sourceTree = "<group>"; };
+		18C26969276B89AA00E665BE /* MetadataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetadataModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +114,7 @@
 				1856B412276A204800991641 /* FullHunt.h */,
 				1856B413276A204800991641 /* FullHunt.docc */,
 				1856B42E276A238C00991641 /* Core */,
+				18C2695C276B83FE00E665BE /* Models */,
 				1856B431276A353200991641 /* Networking */,
 			);
 			path = FullHunt;
@@ -138,6 +153,20 @@
 				18C26958276B6D3800E665BE /* ServiceManager.swift */,
 			);
 			path = Networking;
+			sourceTree = "<group>";
+		};
+		18C2695C276B83FE00E665BE /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				18C2695D276B84CA00E665BE /* DomainModel.swift */,
+				18C2695F276B87EA00E665BE /* SubdomainModel.swift */,
+				18C26961276B889A00E665BE /* HostModel.swift */,
+				18C26963276B895800E665BE /* CloudModel.swift */,
+				18C26965276B897300E665BE /* DNSModel.swift */,
+				18C26967276B899100E665BE /* IPMetadataModel.swift */,
+				18C26969276B89AA00E665BE /* MetadataModel.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -250,16 +279,23 @@
 			buildActionMask = 2147483647;
 			files = (
 				18C26959276B6D3800E665BE /* ServiceManager.swift in Sources */,
+				18C26964276B895800E665BE /* CloudModel.swift in Sources */,
+				18C2696A276B89AA00E665BE /* MetadataModel.swift in Sources */,
 				18C2694D276B40E800E665BE /* Router.swift in Sources */,
+				18C26962276B889A00E665BE /* HostModel.swift in Sources */,
 				1856B42A276A210A00991641 /* FullHuntConfiguration.swift in Sources */,
 				1856B414276A204800991641 /* FullHunt.docc in Sources */,
 				1856B42C276A221100991641 /* FullHuntApp.swift in Sources */,
 				18C26949276B3A8800E665BE /* Requestable.swift in Sources */,
+				18C26968276B899100E665BE /* IPMetadataModel.swift in Sources */,
 				1856B433276A391500991641 /* HTTPMethod.swift in Sources */,
+				18C26960276B87EA00E665BE /* SubdomainModel.swift in Sources */,
 				18C26954276B619E00E665BE /* FullHuntError.swift in Sources */,
 				1856B430276A26EE00991641 /* Constants.swift in Sources */,
 				18C2694B276B3B3600E665BE /* HTTPEncoding.swift in Sources */,
+				18C2695E276B84CA00E665BE /* DomainModel.swift in Sources */,
 				18C2694F276B44D400E665BE /* HeaderKey.swift in Sources */,
+				18C26966276B897300E665BE /* DNSModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
