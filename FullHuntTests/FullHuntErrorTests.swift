@@ -51,4 +51,18 @@ class FullHuntErrorTests: XCTestCase {
         XCTAssertEqual(error.code, 500)
         XCTAssertEqual(error.description, "The data is not in a correct format.")
     }
+    
+    func testRequestNotFound() {
+        let error = FullHuntError.requestNotFound
+        
+        XCTAssertEqual(error.code, 499)
+        XCTAssertEqual(error.description, "Request can not be nil.")
+    }
+    
+    func testGenericError() {
+        let error = FullHuntError.generic(code: 1, description: "test error")
+        
+        XCTAssertEqual(error.code, 1)
+        XCTAssertEqual(error.description, "test error")
+    }
 }

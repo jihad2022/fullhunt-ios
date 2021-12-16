@@ -10,12 +10,22 @@ import Foundation
  An enum with FullHunt errors
  */
 enum FullHuntError: Error {
+    /// Invalid request
     case badRequest
+    /// Invalid authorization token
     case unauthorized
+    /// Invalid access to protected resources
     case forbidden
+    /// Invalid access to unavailable resources
     case notFount
+    /// Sending too many requests
     case tooManyRequests
+    /// Invalid response returned
     case badResponse
+    /// The request is nil
+    case requestNotFound
+    /// Generic error
+    case generic(code: Int, description: String)
     
     var description: String {
         switch self {
@@ -31,6 +41,10 @@ enum FullHuntError: Error {
             return "You are sending too many requests."
         case .badResponse:
             return "The data is not in a correct format."
+        case .requestNotFound:
+            return "Request can not be nil."
+        case .generic(_, let description):
+            return description
         }
     }
     
@@ -48,6 +62,10 @@ enum FullHuntError: Error {
             return 429
         case .badResponse:
             return 500
+        case .requestNotFound:
+            return 499
+        case .generic(let code, _):
+            return code
         }
     }
 }
