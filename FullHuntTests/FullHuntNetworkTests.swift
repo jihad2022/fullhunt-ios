@@ -15,5 +15,11 @@ class FullHuntNetworkTests: XCTestCase {
         
         XCTAssertEqual(method.rawValue, "GET")
     }
+    
+    func testHTTPJSONEncodingRawValue() {
+        let encoding = HTTPEncoding.json
+        
+        XCTAssertEqual(encoding.rawValue, "application/json")
+    }
 
 }
