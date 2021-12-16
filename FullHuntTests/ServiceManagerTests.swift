@@ -46,7 +46,7 @@ fileprivate class ServiceManagerSuccessMock: ServiceManagerProtocol {
     }
 }
 
-fileprivate class ServiceManagerFailureMock: ServiceManagerProtocol {
+class ServiceManagerFailureMock: ServiceManagerProtocol {
     func makeNetworkRequest<T>(
         router: Router,
         completion: @escaping (Result<T, FullHuntError>) -> Void

@@ -29,11 +29,7 @@ class FullHuntNetworkTests: XCTestCase {
     }
     
     func testRouterGetDomainDetails() {
-        let getDomainDetails = Router.getDomainDetails(
-            token: "testToken",
-            version: "testVersion",
-            domain: "test.com"
-        )
+        let getDomainDetails = getDomainRouter()
         
         XCTAssertEqual(getDomainDetails.request?.httpMethod, HTTPMethod.get.rawValue)
         XCTAssertEqual(
@@ -55,11 +51,7 @@ class FullHuntNetworkTests: XCTestCase {
     }
     
     func testRouterGetSubdomains() {
-        let getSubdomains = Router.getSubdomains(
-            token: "testToken",
-            version: "testVersion",
-            domain: "test.com"
-        )
+        let getSubdomains = getSubdomainRouter()
         
         XCTAssertEqual(getSubdomains.request?.httpMethod, HTTPMethod.get.rawValue)
         XCTAssertEqual(
@@ -81,11 +73,7 @@ class FullHuntNetworkTests: XCTestCase {
     }
     
     func testRouterGetHostDetails() {
-        let getHostDetails = Router.getHostDetails(
-            token: "testToken",
-            version: "testVersion",
-            host: "test.test.com"
-        )
+        let getHostDetails = getHostRouter()
         
         XCTAssertEqual(getHostDetails.request?.httpMethod, HTTPMethod.get.rawValue)
         XCTAssertEqual(
@@ -103,6 +91,30 @@ class FullHuntNetworkTests: XCTestCase {
         XCTAssertEqual(
             getHostDetails.request?.url?.absoluteString,
             "https://fullhunt.io/api/testVersion/host/test.test.com"
+        )
+    }
+    
+    private func getDomainRouter() -> Router {
+        Router.getDomainDetails(
+            token: "testToken",
+            version: "testVersion",
+            domain: "test.com"
+        )
+    }
+    
+    private func getSubdomainRouter() -> Router {
+        Router.getSubdomains(
+            token: "testToken",
+            version: "testVersion",
+            domain: "test.com"
+        )
+    }
+    
+    private func getHostRouter() -> Router {
+        Router.getHostDetails(
+            token: "testToken",
+            version: "testVersion",
+            host: "test.test.com"
         )
     }
 }

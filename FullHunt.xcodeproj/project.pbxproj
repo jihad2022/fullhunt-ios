@@ -31,6 +31,7 @@
 		18C26966276B897300E665BE /* DNSModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C26965276B897300E665BE /* DNSModel.swift */; };
 		18C26968276B899100E665BE /* IPMetadataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C26967276B899100E665BE /* IPMetadataModel.swift */; };
 		18C2696A276B89AA00E665BE /* MetadataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C26969276B89AA00E665BE /* MetadataModel.swift */; };
+		18C2696C276B8D8100E665BE /* FullHuntAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C2696B276B8D8100E665BE /* FullHuntAppDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +70,7 @@
 		18C26965276B897300E665BE /* DNSModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DNSModel.swift; sourceTree = "<group>"; };
 		18C26967276B899100E665BE /* IPMetadataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IPMetadataModel.swift; sourceTree = "<group>"; };
 		18C26969276B89AA00E665BE /* MetadataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetadataModel.swift; sourceTree = "<group>"; };
+		18C2696B276B8D8100E665BE /* FullHuntAppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullHuntAppDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,6 +138,7 @@
 			children = (
 				1856B429276A210A00991641 /* FullHuntConfiguration.swift */,
 				1856B42B276A221100991641 /* FullHuntApp.swift */,
+				18C2696B276B8D8100E665BE /* FullHuntAppDelegate.swift */,
 				1856B42F276A26EE00991641 /* Constants.swift */,
 				18C26953276B619E00E665BE /* FullHuntError.swift */,
 			);
@@ -291,6 +294,7 @@
 				1856B433276A391500991641 /* HTTPMethod.swift in Sources */,
 				18C26960276B87EA00E665BE /* SubdomainModel.swift in Sources */,
 				18C26954276B619E00E665BE /* FullHuntError.swift in Sources */,
+				18C2696C276B8D8100E665BE /* FullHuntAppDelegate.swift in Sources */,
 				1856B430276A26EE00991641 /* Constants.swift in Sources */,
 				18C2694B276B3B3600E665BE /* HTTPEncoding.swift in Sources */,
 				18C2695E276B84CA00E665BE /* DomainModel.swift in Sources */,

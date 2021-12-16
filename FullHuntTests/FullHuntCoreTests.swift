@@ -26,8 +26,7 @@ class FullHuntCoreTests: XCTestCase {
     func testConfigureAppWithTokenAndBaseVersion() {
         do {
             let token = try XCTUnwrap(token)
-            let configuration = FullHuntConfiguration(with: token)
-            let fullHuntApp = FullHuntApp(with: configuration)
+            let fullHuntApp = getApp(with: token)
             
             XCTAssertEqual(fullHuntApp.appConfiguration.apiToken, token)
             XCTAssertEqual(fullHuntApp.appConfiguration.apiVersion, kBaseVersion)
@@ -40,13 +39,86 @@ class FullHuntCoreTests: XCTestCase {
         do {
             let token = try XCTUnwrap(token)
             let apiVersion = try XCTUnwrap(apiVersion)
-            let configuration = FullHuntConfiguration(with: token, version: apiVersion)
-            let fullHuntApp = FullHuntApp(with: configuration)
+            let fullHuntApp = getApp(with: token, version: apiVersion)
             
             XCTAssertEqual(fullHuntApp.appConfiguration.apiToken, token)
             XCTAssertEqual(fullHuntApp.appConfiguration.apiVersion, apiVersion)
         } catch {
             XCTFail(error.localizedDescription)
         }
+    }
+    
+    func testGetDomainDetailsSuccess() {
+        do {
+            let token = try XCTUnwrap(token)
+            let apiVersion = try XCTUnwrap(apiVersion)
+            let fullHuntApp = getApp(
+                with: token,
+                version: apiVersion,
+                serviceManager: ServiceManagerDomainSuccessMock()
+            )
+            
+            let fullHuntSuccessDelegate = FullHuntSuccessDelegate()
+            fullHuntApp.delegate = fullHuntSuccessDelegate
+            
+            fullHuntApp.getDomainDetails(for: "test.com")
+        } catch {
+            XCTFail(error.localizedDescription)
+        }
+    }
+    
+    func testGetDomainDetailsFailure() {
+        do {
+            let token = try XCTUnwrap(token)
+            let apiVersion = try XCTUnwrap(apiVersion)
+            let fullHuntApp = getApp(
+                with: token,
+                version: apiVersion,
+                serviceManager: ServiceManagerFailureMock()
+            )
+            
+            let fullHuntFailedDelegate = FullHuntFailedDelegate()
+            fullHuntApp.delegate = fullHuntFailedDelegate
+            
+            fullHuntApp.getDomainDetails(for: "test.com")
+        } catch {
+            XCTFail(error.localizedDescription)
+        }
+    }
+    
+    private func getApp(
+        with token: String,
+        version: String? = nil,
+        serviceManager: ServiceManagerProtocol? = nil
+    ) -> FullHuntApp {
+        let configuration = FullHuntConfiguration(with: token, version: version)
+        guard let serviceManager = serviceManager else {
+            return FullHuntApp(with: configuration)
+        }
+        return FullHuntApp(with: configuration, serviceManager: serviceManager)
+    }
+}
+
+fileprivate class FullHuntSuccessDelegate: FullHuntAppDelegate {
+    func getDomainDetailsEnded(with domain: Domain?, error: FullHuntError?) {
+        XCTAssertNotNil(domain)
+        XCTAssertEqual(domain?.domain, "test.com")
+    }
+}
+
+fileprivate class FullHuntFailedDelegate: FullHuntAppDelegate {
+    func getDomainDetailsEnded(with domain: Domain?, error: FullHuntError?) {
+        XCTAssertNotNil(error)
+        XCTAssertEqual(error?.code, 400)
+    }
+}
+
+fileprivate class ServiceManagerDomainSuccessMock: ServiceManagerProtocol {
+    func makeNetworkRequest<T>(
+        router: Router,
+        completion: @escaping (Result<T, FullHuntError>) -> Void
+    ) where T: Decodable {
+        let domain = Domain(domain: "test.com", message: "", hosts: [], status: 200, metadata: nil)
+        completion(.success(domain as! T))
     }
 }
