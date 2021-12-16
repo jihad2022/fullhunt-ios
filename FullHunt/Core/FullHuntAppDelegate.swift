@@ -10,4 +10,5 @@ import Foundation
 protocol FullHuntAppDelegate: AnyObject {
     func getDomainDetailsEnded(with domain: Domain?, error: FullHuntError?)
     func getSubdomainDetailsEnded(with subdomain: Subdomain?, error: FullHuntError?)
+    func getHostDetailsEnded(with host: Host?, error: FullHuntError?)
 }

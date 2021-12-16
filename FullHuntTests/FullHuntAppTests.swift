@@ -8,7 +8,7 @@
 import XCTest
 @testable import FullHunt
 
-class FullHuntCoreTests: XCTestCase {
+class FullHuntAppTests: XCTestCase {
     
     var token: String? = nil
     var apiVersion: String? = nil
@@ -124,6 +124,44 @@ class FullHuntCoreTests: XCTestCase {
         }
     }
     
+    func testGetHostDetailsSuccess() {
+        do {
+            let token = try XCTUnwrap(token)
+            let apiVersion = try XCTUnwrap(apiVersion)
+            let fullHuntApp = getApp(
+                with: token,
+                version: apiVersion,
+                serviceManager: ServiceManagerHostSuccessMock()
+            )
+            
+            let fullHuntSuccessDelegate = FullHuntSuccessDelegate()
+            fullHuntApp.delegate = fullHuntSuccessDelegate
+            
+            fullHuntApp.getHostDetails(for: "t1.test.com")
+        } catch {
+            XCTFail(error.localizedDescription)
+        }
+    }
+    
+    func testGetHostDetailsFailed() {
+        do {
+            let token = try XCTUnwrap(token)
+            let apiVersion = try XCTUnwrap(apiVersion)
+            let fullHuntApp = getApp(
+                with: token,
+                version: apiVersion,
+                serviceManager: ServiceManagerFailureMock()
+            )
+            
+            let fullHuntSuccessDelegate = FullHuntFailedDelegate()
+            fullHuntApp.delegate = fullHuntSuccessDelegate
+            
+            fullHuntApp.getHostDetails(for: "t1.test.com")
+        } catch {
+            XCTFail(error.localizedDescription)
+        }
+    }
+    
     private func getApp(
         with token: String,
         version: String? = nil,
@@ -147,6 +185,11 @@ fileprivate class FullHuntSuccessDelegate: FullHuntAppDelegate {
         XCTAssertNotNil(subdomain)
         XCTAssertEqual(subdomain?.domain, "test.test.com")
     }
+    
+    func getHostDetailsEnded(with host: Host?, error: FullHuntError?) {
+        XCTAssertNotNil(host)
+        XCTAssertEqual(host?.host, "t1.test.com")
+    }
 }
 
 fileprivate class FullHuntFailedDelegate: FullHuntAppDelegate {
@@ -156,6 +199,11 @@ fileprivate class FullHuntFailedDelegate: FullHuntAppDelegate {
     }
     
     func getSubdomainDetailsEnded(with subdomain: Subdomain?, error: FullHuntError?) {
+        XCTAssertNotNil(error)
+        XCTAssertEqual(error?.code, 400)
+    }
+    
+    func getHostDetailsEnded(with host: Host?, error: FullHuntError?) {
         XCTAssertNotNil(error)
         XCTAssertEqual(error?.code, 400)
     }
@@ -178,5 +226,15 @@ fileprivate class ServiceManagerSubdomainSuccessMock: ServiceManagerProtocol {
     ) where T: Decodable {
         let domain = Subdomain(domain: "test.test.com", message: "", subdomains: [], status: 200, metadata: nil)
         completion(.success(domain as! T))
+    }
+}
+
+fileprivate class ServiceManagerHostSuccessMock: ServiceManagerProtocol {
+    func makeNetworkRequest<T>(
+        router: Router,
+        completion: @escaping (Result<T, FullHuntError>) -> Void
+    ) where T: Decodable {
+        let host = Host(cdn: nil, domain: nil, tld: nil, httpTitle: nil, ipAddress: nil, host: "t1.test.com", cloud: nil, dns: nil, hasIpv6: nil, hasPrivateIP: nil, isCDN: nil, isCloud: nil, isCloudflare: nil, isLive: nil, isResolvable: nil, httpStatusCode: nil, ipMetadata: nil, networkPorts: nil, tags: nil)
+        completion(.success(host as! T))
     }
 }

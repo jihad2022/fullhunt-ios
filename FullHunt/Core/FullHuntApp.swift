@@ -37,7 +37,11 @@ public class FullHuntApp {
         - domain: the designated domain to lookup
      */
     func getDomainDetails(for domain: String) {
-        let router = Router.getDomainDetails(token: appConfiguration.apiToken, version: appConfiguration.apiVersion, domain: domain)
+        let router = Router.getDomainDetails(
+            token: appConfiguration.apiToken,
+            version: appConfiguration.apiVersion,
+            domain: domain
+        )
         serviceManager.makeNetworkRequest(
             router: router
         ) { [weak self] (result: Result<Domain, FullHuntError>) in
@@ -56,7 +60,11 @@ public class FullHuntApp {
         - subdomain: the designated subdomain to lookup
      */
     func getSubdomainDetails(for subdomain: String) {
-        let router = Router.getSubdomains(token: appConfiguration.apiToken, version: appConfiguration.apiVersion, domain: subdomain)
+        let router = Router.getSubdomains(
+            token: appConfiguration.apiToken,
+            version: appConfiguration.apiVersion,
+            domain: subdomain
+        )
         serviceManager.makeNetworkRequest(
             router: router
         ) { [weak self] (result: Result<Subdomain, FullHuntError>) in
@@ -65,6 +73,29 @@ public class FullHuntApp {
                 self?.delegate?.getSubdomainDetailsEnded(with: subdomain, error: nil)
             case .failure(let error):
                 self?.delegate?.getSubdomainDetailsEnded(with: nil, error: error)
+            }
+        }
+    }
+    
+    /**
+     Get host details from API
+     - parameters:
+        - host: the designated host to lookup
+     */
+    func getHostDetails(for host: String) {
+        let router = Router.getHostDetails(
+            token: appConfiguration.apiToken,
+            version: appConfiguration.apiVersion,
+            host: host
+        )
+        serviceManager.makeNetworkRequest(
+            router: router
+        ) { [weak self] (result: Result<Host, FullHuntError>) in
+            switch result {
+            case .success(let host):
+                self?.delegate?.getHostDetailsEnded(with: host, error: nil)
+            case .failure(let error):
+                self?.delegate?.getHostDetailsEnded(with: nil, error: error)
             }
         }
     }
